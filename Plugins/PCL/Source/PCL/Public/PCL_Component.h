@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "Components/ActorComponent.h"
+#include "Interfaces/IPluginManager.h"
 //#include "Runtime/Engine/Classes/Engine/StaticMeshActor.h"
 #include "PCL_Actor.h"
 #include "PCL_Library.h"
@@ -25,11 +26,9 @@ protected:
 	UFUNCTION(BlueprintCallable)
 		void LoadPCL();
 	UPROPERTY(EditAnywhere)
-		float minDistance = 0.05f;
-	UPROPERTY(EditAnywhere)
 		float locPointMultiplier = 100;
-	UPROPERTY(EditAnywhere)
-		int32 maxPoints = 5000;
+	//UPROPERTY(EditAnywhere)
+		//FString fileLocation = FPaths::Combine(*(IPluginManager::Get().FindPlugin("PCL")->GetBaseDir()), TEXT("Source/PCL/Private/test_ply.ply"));
 
 public:	
 	// Called every frame
@@ -37,8 +36,6 @@ public:
 
 	UPROPERTY(EditAnywhere)
 	TSubclassOf<class APCL_Actor> PCL_Actor;
-
-
 
 private:
 	pcl::PointCloud <pcl::PointXYZ> cloud;

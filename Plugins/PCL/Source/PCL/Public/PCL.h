@@ -4,6 +4,8 @@
 
 #include "Modules/ModuleManager.h"
 
+DECLARE_LOG_CATEGORY_EXTERN(PCLLog, Display, All);
+
 class FPCLModule : public IModuleInterface
 {
 public:
@@ -14,6 +16,5 @@ public:
 
 private:
 	/** Handle to the test dll we will load */
-	void*	ExampleLibraryHandle;
 	int     LoadPCDFile();
 };
