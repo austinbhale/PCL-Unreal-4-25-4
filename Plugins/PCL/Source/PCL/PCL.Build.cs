@@ -80,18 +80,18 @@ public class PCL : ModuleRules
 			{
 				Path.Combine(OpenCVPath,"lib","x64","opencv_world451.lib"),
                 //boost Lib
-                Path.Combine(BoostPath, "lib/libboost_chrono-vc141-mt-1_64.lib"),
-				Path.Combine(BoostPath, "lib/libboost_date_time-vc141-mt-1_64.lib"),
-				Path.Combine(BoostPath, "lib/libboost_filesystem-vc141-mt-1_64.lib"),
-				Path.Combine(BoostPath, "lib/libboost_iostreams-vc141-mt-1_64.lib"),
-				Path.Combine(BoostPath, "lib/libboost_system-vc141-mt-1_64.lib"),
-				Path.Combine(BoostPath, "lib/libboost_thread-vc141-mt-1_64.lib"),
+                Path.Combine(BoostPath, "lib\\libboost_chrono-vc141-mt-1_64.lib"),
+				Path.Combine(BoostPath, "lib\\libboost_date_time-vc141-mt-1_64.lib"),
+				Path.Combine(BoostPath, "lib\\libboost_filesystem-vc141-mt-1_64.lib"),
+				Path.Combine(BoostPath, "lib\\libboost_iostreams-vc141-mt-1_64.lib"),
+				Path.Combine(BoostPath, "lib\\libboost_system-vc141-mt-1_64.lib"),
+				Path.Combine(BoostPath, "lib\\libboost_thread-vc141-mt-1_64.lib"),
                 //PCL Lib
-                Path.Combine(PCLPath, "lib/pcl_common_release.lib"),
-				Path.Combine(PCLPath, "lib/pcl_io_release.lib"),
-				Path.Combine(PCLPath, "lib/pcl_io_ply_release.lib"),
-				Path.Combine(PCLPath, "lib/pcl_octree_release.lib"),
-				Path.Combine(PCLPath, "lib/pcl_ml_release.lib")
+                Path.Combine(PCLPath, "lib\\pcl_common_release.lib"),
+				Path.Combine(PCLPath, "lib\\pcl_io_release.lib"),
+				Path.Combine(PCLPath, "lib\\pcl_io_ply_release.lib"),
+				Path.Combine(PCLPath, "lib\\pcl_octree_release.lib"),
+				Path.Combine(PCLPath, "lib\\pcl_ml_release.lib")
 		});
 
 		//Ensure that the DLLs are staged along with the executable

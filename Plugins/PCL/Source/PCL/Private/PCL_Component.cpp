@@ -1,7 +1,7 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
-#include "PCL.h"
 #include "PCL_Component.h"
+#include "PCL.h"
 #include "Runtime/Engine/Public/DrawDebugHelpers.h"
 #include "Runtime/CoreUObject/Public/UObject/ConstructorHelpers.h"
 
@@ -35,18 +35,20 @@ void UPCL_Component::TickComponent(float DeltaTime, ELevelTick TickType, FActorC
 }
 
 
-void UPCL_Component::LoadPCL()
+TArray<FVector> UPCL_Component::LoadPCL()
 {
+	TArray<FVector> currPoints;
+
 	if (PCL_Actor)
 	{
 		UWorld* world = GetWorld();
 		if (world)
 		{
-			//"D:\\Unreal Projects\\UE_4_25\\PCL-Unreal-4-25-4\\Plugins\\PCL\\Source\\PCL\\Private\\Laurana50k.ply"
+			//"<your-path>\\PCL-Unreal-4-25-4\\Plugins\\PCL\\Source\\PCL\\Private\\Laurana50k.ply"
 			if (pcl::io::loadPLYFile("D:\\Unreal Projects\\UE_4_25\\PCL-Unreal-4-25-4\\Plugins\\PCL\\Source\\PCL\\Private\\test_ply.ply", cloud) == -1)
 			{
 				UE_LOG(PCLLog, Error, TEXT("Couldn't read ply file.\n"));
-				return;
+				return currPoints;
 			}
 
 			auto w = FString::FromInt(cloud.width * cloud.height);
@@ -55,15 +57,18 @@ void UPCL_Component::LoadPCL()
 			FTransform trans;
 			trans.SetRotation(FQuat(0.0, 0.0, 0.0, 0.0));
 			trans.SetScale3D(FVector(1.0, 1.0, 1.0));
-			//TArray<pcl::PointXYZ> currPoints;
+
 			for (pcl::PointXYZ i : cloud.points)
 			{
+				currPoints.Add(FVector(i.x, i.y, i.z) * locPointMultiplier);
+				/*
 				FVector pointLoc = FVector(i.x, i.y, i.z) * locPointMultiplier;
-
 				trans.SetLocation(pointLoc);
 				UE_LOG(PCLLog, Warning, TEXT("--%d,--%d,--%d"), pointLoc.X, pointLoc.Y, pointLoc.Z);
 				world->SpawnActor<APCL_Actor>(PCL_Actor, trans);
+				*/
 			}
 		}
 	}
+	return currPoints;
 }

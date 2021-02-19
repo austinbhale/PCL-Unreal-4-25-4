@@ -24,7 +24,7 @@ protected:
 	// Called when the game starts
 	virtual void BeginPlay() override;
 	UFUNCTION(BlueprintCallable)
-		void LoadPCL();
+		TArray<FVector> LoadPCL();
 	UPROPERTY(EditAnywhere)
 		float locPointMultiplier = 100;
 	//UPROPERTY(EditAnywhere)
